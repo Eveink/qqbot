@@ -10,6 +10,7 @@ HELP_INFO = """
 request = require('request')
 Path = require 'path'
 fs = require 'fs'
+last_alert_time = 0
 
 # 毫秒亲
 start_at = new Date().getTime()
@@ -46,14 +47,14 @@ module.exports = (content ,send, robot, message)->
       send "汉子：#{stat.male} 妹子：#{stat.female} 未知：#{stat.unknown} 妹子比例：#{percent}%"
 
     # 妹子出现提示
-    if message.from_user and message.from_user.gender is "female" and (!last_sound_time or last_sound_time <= +new Date - 60*5*1000)
+    if message.from_user and message.from_user.gender is "female" and last_alert_time <= +new Date - 60*5*1000
       send "☆ω☆ 妹子出现，请注意！"
-      last_sound_time = +new Date
+      last_alert_time = +new Date
 
     # 查询群规则
     api_url = "https://api.github.com/gists/6608448"
     rule_file_path = Path.join __dirname, "..", "tmp/QQ-Qun.md"
-    rule_id = content.match /^~rule (.*)/i
+    rule_id = content.match /~rule (.*)/i
     if rule_id
       if rule_id[1] is 'update'
         request
