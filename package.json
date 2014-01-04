@@ -27,6 +27,7 @@
   "dependencies": {
     "scoped-http-client": ">= 0.9.8",
     "log":                ">= 1.4.0",
+    "request":            "~2.x",
     "js-yaml" :           ">= 3.0.0"
   },
 

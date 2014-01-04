@@ -176,7 +176,10 @@ class QQBot
     _on_message : (event)->
         msg = @_create_message event
         if msg.type == 'group'
-            log.debug "[群消息]","[#{msg.from_group.name}] #{msg.from_user.nick}:#{msg.content} #{msg.time}"
+            try
+              log.debug "[群消息]","[#{msg.from_group.name}] #{msg.from_user.nick}:#{msg.content} #{msg.time}"
+            catch e
+              log.error e
         else if msg.type == 'buddy'
             log.debug "[好友消息]","#{msg.from_user.nick}:#{msg.content} #{msg.time}"
 
