@@ -204,10 +204,40 @@ http://0.web.qstatic.com/webqqpic/pubapps/0/50/eqq.all.js  搜索 P=function
         }
     ]
 }
+```
 
+消息格式
+
+``` 
+json
+
+{ content: 'message 格式',
+  time: Sat Jan 04 2014 19:08:28 GMT+0800 (CST),
+  from_uin: 2842933793,
+  type: 'group',
+  uid: 15519,
+  from_gid: 2019056807,
+  group_code: 2733620845,
+  from_group:
+   { flag: 17892353,
+     name: '精英盒子',
+     gid: 2019056807,
+     code: 2733620845 },
+  from_user:
+   { nick: '孙亮',
+     province: '湖南',
+     gender: 'male',
+     uin: 2842933793,
+     country: '中国',
+     city: '长沙' } }
+     
 ```
 
 群成员
-``` json
+
+```
+json
+
 {"retcode":0,"result":{"stats":[{"client_type":1,"uin":2440652742,"stat":10},{"client_type":41,"uin":2769546520,"stat":10}],"minfo":[{"nick":"呼吸 (糗百)","province":"上海","gender":"male","uin":2440652742,"country":"中国","city":"浦东新区"},{"nick":"robot","province":"上海","gender":"female","uin":2899268194,"country":"中国","city":"杨浦"},{"nick":"qqbot","province":"广东","gender":"male","uin":2769546520,"country":"中国","city":"深圳"},{"nick":"robot ops","province":"上海","gender":"male","uin":2041084648,"country":"中国","city":"黄浦"}],"ginfo":{"face":0,"memo":"","class":10048,"fingermemo":"","code":3483368056,"createtime":1388307595,"flag":1090519041,"level":0,"name":"qqbot群","gid":2559225925,"owner":2769546520,"members":[{"muin":2440652742,"mflag":21},{"muin":2899268194,"mflag":20},{"muin":2769546520,"mflag":20},{"muin":2041084648,"mflag":0}],"option":1},"vipinfo":[{"vip_level":0,"u":2440652742,"is_vip":0},{"vip_level":0,"u":2899268194,"is_vip":0},{"vip_level":0,"u":2769546520,"is_vip":0},{"vip_level":0,"u":2041084648,"is_vip":0}]}}
+
 ```
