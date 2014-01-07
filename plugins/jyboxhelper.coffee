@@ -1,10 +1,16 @@
 HELP_INFO = """
+    ~about           #关于
     ~time            #显示时间
     ~rule 1.1        #查询群规则
     ~rule update     #从 Gist 更新群规则
     ~stat            #查询妹子比例
     ~help            #查询帮助文档
     ~uptime          #服务运行时间
+"""
+
+ABOUT_INFO = """
+    这是由@孙亮 维护的精英盒子群机器人，基于@xhan 的开源代码开发。本机器人同样也是开源的，欢迎贡献代码。
+    https://github.com/unstop/qqbot/
 """
 
 request = require('request')
@@ -24,6 +30,8 @@ start_at = new Date().getTime()
 # 问题：方式不优雅，应该是一个模式识别成功，别的就不应调用到
 module.exports = (content ,send, robot, message)->
 
+    if content.match /^~about$/i
+        send ABOUT_INFO
 
     if content.match /^~help$/i
         send HELP_INFO
@@ -47,8 +55,10 @@ module.exports = (content ,send, robot, message)->
       send "汉子：#{stat.male} 妹子：#{stat.female} 未知：#{stat.unknown} 妹子比例：#{percent}%"
 
     # 妹子出现提示
-    if message.from_user and message.from_user.gender is "female" and last_alert_time <= +new Date - 60*5*1000
-      send "☆ω☆ 妹子出现，请注意！"
+    if message.from_user and message.from_user.gender is "female" and last_alert_time <= +new Date - 60*10*1000
+      # 对 cry 姐姐单独判断
+      unless message.from_user.uin is '1666122369'
+        send "☆ω☆ 妹子出现，请注意！"
       last_alert_time = +new Date
 
     # 查询群规则
