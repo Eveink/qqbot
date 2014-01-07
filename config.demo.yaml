@@ -10,4 +10,4 @@ host: localhost
 
 # 插件列表
 plugins:
-    - help
+    - jyboxhelper
