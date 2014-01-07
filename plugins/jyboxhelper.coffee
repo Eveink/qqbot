@@ -57,7 +57,7 @@ module.exports = (content ,send, robot, message)->
     # 妹子出现提示
     if message.from_user and message.from_user.gender is "female" and last_alert_time <= +new Date - 60*10*1000
       # 对 cry 姐姐单独判断
-      unless message.from_user.uin is '1666122369'
+      unless message.from_user.uin is 1666122369
         send "☆ω☆ 妹子出现，请注意！"
       last_alert_time = +new Date
 
